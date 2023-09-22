@@ -15,7 +15,7 @@ export default function Header(): React.JSX.Element {
       <div className="container container--size-l">
         <Link className="logo header__logo" to={AppRoute.Main}>
           <svg width="134" height="52" aria-hidden="true">
-            <use href="#logo"></use>
+            <use xlinkHref="#logo"></use>
           </svg>
         </Link>
         <nav className="main-nav header__main-nav">
