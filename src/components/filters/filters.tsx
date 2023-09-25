@@ -1,3 +1,5 @@
+import { DifficultyLevel, Theme } from '../../const/filter';
+
 export default function Filters(): React.JSX.Element {
   return (
     <form className="filter" action="#" method="get">
