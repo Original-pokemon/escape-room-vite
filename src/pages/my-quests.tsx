@@ -1,6 +1,5 @@
 import Footer from '../components/footer/footer';
 import Header from '../components/header/header';
-import QuestCard from '../components/quest-card/quest-card';
 
 export default function MyQuests(): React.JSX.Element {
   return (
@@ -18,11 +17,11 @@ export default function MyQuests(): React.JSX.Element {
             <h1 className="title title--size-m page-content__title">Мои бронирования</h1>
           </div>
           <div className="cards-grid">
-            <QuestCard />
+
           </div>
         </div>
       </main>
       <Footer />
     </div>
-  )
+  );
 }

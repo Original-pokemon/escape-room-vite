@@ -1,7 +1,29 @@
+import { useEffect } from 'react';
+
+import { useParams } from 'react-router-dom';
+import SkewLoader from 'react-spinners/SkewLoader';
+
 import Footer from '../components/footer/footer';
 import Header from '../components/header/header';
+import { useAppDispatch, useAppSelector } from '../hooks';
+import { fetchBookingInfoAction } from '../store/api-actions';
 
 export default function Booking(): React.JSX.Element {
+  const { id } = useParams();
+  const dispatch = useAppDispatch();
+  const bookings = useAppSelector((state) => state.bookingInfo);
+  const isDataLoading = useAppSelector((state) => state.isBookingDataLoading);
+
+  useEffect(() => {
+    if (id && !bookings && !isDataLoading) {
+      dispatch(fetchBookingInfoAction(id));
+    }
+  });
+
+  if (isDataLoading || !bookings) {
+    return <SkewLoader size="60px" color="#f2890f" cssOverride={{ display: 'block', margin: 'auto' }} />;
+  }
+
   return (
     <div className="wrapper">
       <Header />
@@ -21,7 +43,8 @@ export default function Booking(): React.JSX.Element {
           <div className="page-content__item">
             <div className="booking-map">
               <div className="map">
-                <div className="map__container"></div>
+                <div className="map__container">
+                </div>
               </div>
               <p className="booking-map__address">Вы&nbsp;выбрали: наб. реки Карповки&nbsp;5, лит&nbsp;П, м. Петроградская</p>
             </div>
@@ -99,7 +122,8 @@ export default function Booking(): React.JSX.Element {
                 <span className="custom-checkbox__icon">
                   <svg width="20" height="17" aria-hidden="true">
                     <use xlinkHref="#icon-tick"></use>
-                  </svg></span><span className="custom-checkbox__label">Со&nbsp;мной будут дети</span>
+                  </svg>
+                </span><span className="custom-checkbox__label">Со&nbsp;мной будут дети</span>
               </label>
             </fieldset>
             <button className="btn btn--accent btn--cta booking-form__submit" type="submit">Забронировать</button>
@@ -108,13 +132,16 @@ export default function Booking(): React.JSX.Element {
               <span className="custom-checkbox__icon">
                 <svg width="20" height="17" aria-hidden="true">
                   <use xlinkHref="#icon-tick"></use>
-                </svg></span><span className="custom-checkbox__label">Я&nbsp;согласен с
-                <a className="link link--active-silver link--underlined" href="#">правилами обработки персональных данных</a>&nbsp;и пользовательским соглашением</span>
+                </svg>
+              </span>
+              <span className="custom-checkbox__label">Я&nbsp;согласен с
+                <a className="link link--active-silver link--underlined" href="#">правилами обработки персональных данных</a>&nbsp;и пользовательским соглашением
+              </span>
             </label>
           </form>
         </div>
       </main>
       <Footer />
     </div>
-  )
+  );
 }

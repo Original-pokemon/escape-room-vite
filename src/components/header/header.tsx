@@ -5,6 +5,7 @@ import {
   authorizationStatus,
   AuthorizationStatus,
 } from '../../const/authorization-status';
+import Logo from '../logo/logo';
 
 export default function Header(): React.JSX.Element {
   const setActiveLink = ({ isActive }: { isActive: boolean }) => isActive ? 'link active' : 'link';
@@ -13,11 +14,8 @@ export default function Header(): React.JSX.Element {
   return (
     <header className="header">
       <div className="container container--size-l">
-        <Link className="logo header__logo" to={AppRoute.Main}>
-          <svg width="134" height="52" aria-hidden="true">
-            <use xlinkHref="#logo"></use>
-          </svg>
-        </Link>
+        <Logo currentUrl={AppRoute.Main} />
+
         <nav className="main-nav header__main-nav">
           <ul className="main-nav__list">
             <li className="main-nav__item">

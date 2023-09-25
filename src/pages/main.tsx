@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 
+import SkewLoader from 'react-spinners/SkewLoader';
+
 import Filters from '../components/filters/filters';
 import Footer from '../components/footer/footer';
 import Header from '../components/header/header';
@@ -10,6 +12,7 @@ import { fetchQuestsAction } from '../store/api-actions';
 export default function Main(): React.JSX.Element {
   const dispatch = useAppDispatch();
   const quests = useAppSelector((state) => state.quests) || [];
+  const isDataLoading = useAppSelector((state) => state.isQuestsDataLoading);
 
   useEffect(() => {
     dispatch(fetchQuestsAction);
@@ -29,7 +32,11 @@ export default function Main(): React.JSX.Element {
             <Filters />
           </div>
           <h2 className="title visually-hidden">Выберите квест</h2>
-          <QuestsList quests={quests} />
+
+          {isDataLoading ?
+            <SkewLoader size="60px" color="#f2890f" cssOverride={{ display: 'block', margin: 'auto' }} /> :
+
+            <QuestsList quests={quests} />}
         </div>
       </main>
       <Footer />

@@ -1,7 +1,9 @@
 import Footer from '../components/footer/footer';
 import Header from '../components/header/header';
+import Map from '../components/map/map';
 
 export default function Contacts(): React.JSX.Element {
+
   return (
     <div className="wrapper">
       <Header />
@@ -45,7 +47,19 @@ export default function Contacts(): React.JSX.Element {
             </dl>
             <div className="contacts__map">
               <div className="map">
-                <div className="map__container"></div>
+                <div className="map__container">
+                  <Map bookings={{
+                    'id': '475c9d57-bfd3-496d-9297-a3a48b7b21ff',
+                    'location': {
+                      'address': 'наб. реки Карповки 5, лит П, м. Петроградская',
+                      'coords': [
+                        59.968456,
+                        30.31759
+                      ]
+                    }
+                  }}
+                  />
+                </div>
               </div>
             </div>
           </div>

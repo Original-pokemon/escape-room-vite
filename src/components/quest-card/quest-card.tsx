@@ -1,18 +1,21 @@
-import { Link } from 'react-router-dom';
+import { MouseEventHandler } from 'react';
+
+import { generatePath, Link } from 'react-router-dom';
 
 import { AppRoute } from '../../const/app-route';
 import { QuestType } from '../../types/quest';
 
 type QuestCardProps = {
   quest: QuestType;
+  onClick?: MouseEventHandler<HTMLElement>;
 }
 
-export default function QuestCard({ quest }: QuestCardProps): React.JSX.Element {
+export default function QuestCard({ quest, onClick }: QuestCardProps): React.JSX.Element {
   const { id, level, peopleMinMax, previewImg, previewImgWebp, title } = quest;
   const [minPeople, maxPeople] = peopleMinMax;
 
   return (
-    <div className="quest-card" id={id}>
+    <div className="quest-card" id={id} onClick={onClick}>
       <div className="quest-card__img">
         <picture>
           <source type="image/webp" srcSet={previewImgWebp} />
@@ -21,7 +24,7 @@ export default function QuestCard({ quest }: QuestCardProps): React.JSX.Element 
       </div>
       <div className="quest-card__content">
         <div className="quest-card__info-wrapper">
-          <Link className="quest-card__link" to={AppRoute.Quest}>{title}</Link>
+          <Link className="quest-card__link" to={generatePath(AppRoute.Quest, { id: quest.id })}>{title}</Link>
         </div>
         <ul className="tags quest-card__tags">
           <li className="tags__item">

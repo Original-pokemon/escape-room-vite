@@ -1,5 +1,6 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
+import browserHistory from '../../browser-history/browser-history';
 import { AppRoute } from '../../const/app-route';
 import { authorizationStatus } from '../../const/authorization-status';
 import Booking from '../../pages/booking';
@@ -8,13 +9,14 @@ import Login from '../../pages/login';
 import Main from '../../pages/main';
 import MyQuests from '../../pages/my-quests';
 import Quest from '../../pages/quest';
+import HistoryRouter from '../history-route/history-route';
 import PrivateRoute from '../private-route/private-route';
 
 export default function App(): React.JSX.Element {
   // const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
 
   return (
-    <BrowserRouter>
+    <HistoryRouter history={browserHistory}>
       <Routes>
         <Route path={AppRoute.Main} >
           <Route
@@ -56,7 +58,7 @@ export default function App(): React.JSX.Element {
           {/* <Route path='*' element={<NotFoundPage />}></Route> */}
         </Route>
       </Routes >
-    </BrowserRouter>
+    </HistoryRouter>
   );
 }
 
