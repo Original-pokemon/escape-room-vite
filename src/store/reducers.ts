@@ -1,8 +1,9 @@
 import { createReducer } from '@reduxjs/toolkit';
 
-import { AuthorizationStatus } from '../consts/authorization-status';
+import { AuthorizationStatus } from '../const/authorization-status';
+import { DifficultyLevel, Theme } from '../const/filter';
 import {
-  getExtendedQuest,
+  getQuestInfo,
   getQuests,
   setActiveDifficultyLevel,
   setActiveTheme,
@@ -13,7 +14,7 @@ type InitialStateType = {
   activeTheme: Theme;
   activeDifficultyLevel: DifficultyLevel;
   quests: QuestType[] | null;
-  extendedQuest: ExtendedQuestType | null;
+  QuestInfo: QuestInfoType | null;
   authorizationStatus: AuthorizationStatus;
 }
 
@@ -21,7 +22,7 @@ const initialState: InitialStateType = {
   activeTheme: Theme.AllQuests,
   activeDifficultyLevel: DifficultyLevel.Any,
   quests: null,
-  extendedQuest: null,
+  QuestInfo: null,
   authorizationStatus: AuthorizationStatus.Unknown,
 
 };
@@ -37,13 +38,13 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(getQuests, (state, action) => {
       state.quests = action.payload;
     })
-    .addCase(getExtendedQuest, (state, action) => {
-      state.extendedQuest = action.payload;
+    .addCase(getQuestInfo, (state, action) => {
+      state.QuestInfo = action.payload;
     })
 
     .addCase(setAuthorizationStatus, (state, action) => {
       state.authorizationStatus = action.payload;
-    })
+    });
 
 });
 

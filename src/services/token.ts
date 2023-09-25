@@ -1,4 +1,4 @@
-import { AUTH_TOKEN_KEY_NAME } from '../consts/api';
+import { AUTH_TOKEN_KEY_NAME } from '../const/api';
 
 export type TokenType = string;
 
