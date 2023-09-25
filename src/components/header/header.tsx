@@ -1,14 +1,14 @@
 import { Link, NavLink } from 'react-router-dom';
 
-import { AppRoute } from '../../consts/app-route';
+import { AppRoute } from '../../const/app-route';
 import {
   authorizationStatus,
   AuthorizationStatus,
-} from '../../consts/authorization-status';
+} from '../../const/authorization-status';
 
 export default function Header(): React.JSX.Element {
-  const setActiveLink = ({ isActive }: { isActive: boolean }) => isActive ? 'link active' : 'link'
-  const isAuthorization = authorizationStatus === AuthorizationStatus.Auth
+  const setActiveLink = ({ isActive }: { isActive: boolean }) => isActive ? 'link active' : 'link';
+  const isAuthorization = authorizationStatus === AuthorizationStatus.Auth;
 
   return (
     <header className="header">
