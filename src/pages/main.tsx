@@ -1,9 +1,20 @@
+import { useEffect } from 'react';
+
 import Filters from '../components/filters/filters';
 import Footer from '../components/footer/footer';
 import Header from '../components/header/header';
-import QuestCard from '../components/quest-card/quest-card';
+import QuestsList from '../components/quests-list/quests-list';
+import { useAppDispatch, useAppSelector } from '../hooks';
+import { fetchQuestsAction } from '../store/api-actions';
 
 export default function Main(): React.JSX.Element {
+  const dispatch = useAppDispatch();
+  const quests = useAppSelector((state) => state.quests) || [];
+
+  useEffect(() => {
+    dispatch(fetchQuestsAction);
+  }, [dispatch]);
+
   return (
     <div className="wrapper">
       <Header />
@@ -18,9 +29,7 @@ export default function Main(): React.JSX.Element {
             <Filters />
           </div>
           <h2 className="title visually-hidden">Выберите квест</h2>
-          <div className="cards-grid">
-            <QuestCard />
-          </div>
+          <QuestsList quests={quests} />
         </div>
       </main>
       <Footer />

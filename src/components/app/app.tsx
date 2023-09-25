@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { AppRoute } from '../../consts/app-route';
-import { authorizationStatus } from '../../consts/authorization-status';
+import { AppRoute } from '../../const/app-route';
+import { authorizationStatus } from '../../const/authorization-status';
 import Booking from '../../pages/booking';
 import Contacts from '../../pages/contacts';
 import Login from '../../pages/login';
