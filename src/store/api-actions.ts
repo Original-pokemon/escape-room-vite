@@ -3,7 +3,7 @@ import { AxiosInstance } from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { Action, APIRoute } from '../const/actions';
-import { QuestType } from '../types/quest';
+import { QuestInfoType, QuestType } from '../types/quest';
 import { AppDispatchType, StateType } from '../types/state';
 import { getQuestInfo, getQuests } from './actions';
 
