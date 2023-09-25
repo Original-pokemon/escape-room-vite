@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import Footer from '../components/footer/footer';
 import Header from '../components/header/header';
-import { AppRoute } from '../consts/app-route';
+import { AppRoute } from '../const/app-route';
 
 export default function Quest(): React.JSX.Element {
   return (
@@ -39,5 +39,5 @@ export default function Quest(): React.JSX.Element {
       </main>
       <Footer />
     </div>
-  )
+  );
 }

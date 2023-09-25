@@ -1,9 +1,19 @@
+import { useEffect } from 'react';
+
 import Filters from '../components/filters/filters';
 import Footer from '../components/footer/footer';
 import Header from '../components/header/header';
-import QuestCard from '../components/quest-card/quest-card';
+import { useAppDispatch, useAppSelector } from '../hooks';
+import { fetchQuestsAction } from '../store/api-actions';
 
 export default function Main(): React.JSX.Element {
+  const dispatch = useAppDispatch();
+  const quests = useAppSelector((state) => state.quests) || [];
+
+  useEffect(() => {
+    dispatch(fetchQuestsAction);
+  }, [dispatch]);
+
   return (
     <div className="wrapper">
       <Header />

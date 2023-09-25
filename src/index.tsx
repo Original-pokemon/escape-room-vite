@@ -5,8 +5,9 @@ import { Provider } from 'react-redux';
 
 import App from './components/app/app';
 import store from './store';
+import { fetchQuestsAction } from './store/api-actions';
 
-import App from './components/app/App';
+store.dispatch(fetchQuestsAction());
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
